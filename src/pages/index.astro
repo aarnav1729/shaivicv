@@ -1,0 +1,151 @@
+---
+import Icon from "astro-icon";
+import RowEntry from "../components/RowEntry.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import SocialIcon from "../components/SocialIcon.astro";
+
+import { SITE_TITLE } from "../config";
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{SITE_TITLE}</title>
+  </head>
+  <body class="dark:bg-black">
+    <button id="dark-mode-toggle" class="mb-2 mt-2">
+      <Icon name="tabler:sun" class="w-6 h-6 dark:text-white" />
+    </button>
+
+    <div class="text-center mb-3">
+      <h1 class="text-2xl font-bold mb-1 dark:text-white">Shaivi Kaushal</h1>
+      <h2 class="text-base dark:text-white">
+        (+91) 6366655520
+      </h2>
+      <h3 class="text-base dark:text-white">
+        <a
+          href="mailto:shaivi.kaushal23@nludelhi.ac.in"
+          class="hover:text-red-500 dark:text-white dark:hover:text-red-500"
+          >shaivi.kaushal23@nludelhi.ac.in</a
+        >
+      </h3>
+    </div>
+
+    <div id="summary" class="mb-6">
+      <SectionTitle title="Summary" />
+
+      <p class="dark:text-white">
+        Develop my communication, interpersonal, and public speaking skills which will form the basis for my mediation, arbitration, and litigation. This I believe will help me achieve success in my future. By actively networking with legal professionals, and mentors I would like to gain experience in legal research, and writing and broaden my understanding of the legal profession. I also want to improve my analytical thinking skills and learn to adapt quickly as law is an ever-evolving profession. The fact that the law changes so swiftly amazes me, I consider myself passionate about learning. Ultimately, I want to maintain a strong academic record throughout my law school journey.
+      </p>
+    </div>
+
+    <div id="education" class="mb-6">
+      <SectionTitle title="Education" />
+
+      <RowEntry
+        description="Bachelor of Arts and Bachelor of Legislative Law (Hons.) National Law University, Delhi. GPA: 5.8/7.0. NIRF rank 2 for the BA.LLB course."
+        name="July 2023 - May 2028"
+        title="Education"
+      /><br>
+    </div>
+
+    <div id="work-experience" class="mb-6">
+      <SectionTitle title="Work Experience" />
+
+      <RowEntry
+        description="Played an integral role in the organization and successful completion of the walk on National Girl Child Day. Cooperated with my fellow interns to organize programs on cyber education for students in government schools. Participated in a fundraiser for educational funding for children recently rescued from Child Labour."
+        name="Dec 2023 - Jan 2024"
+        title="Volunteer"
+        subTitle="Child Rights And You (CRY)"
+      /><br>
+    </div>
+
+    <div id="additional-information" class="mb-6">
+      <SectionTitle title="Additional Information" />
+
+      <RowEntry
+        description="English, Hindi"
+        name="Languages"
+      /><br>
+      <RowEntry
+        description={<a href="https://example.com/l2pro" target="_blank">L2PRO(basic)</a>}
+        name="Certifications"
+      /><br>
+      <RowEntry
+        description={<a href="https://example.com/finlatics" target="_blank">Finlatics (Investment Banking Experience Program)</a>}
+        name="Certifications"
+      /><br>
+    </div>
+
+    <div id="conferences" class="mb-6">
+      <SectionTitle title="Conferences" />
+
+      <RowEntry
+        description="Played an integral role in organizing a major conference, ensuring its successful execution. Collaborated effectively with fellow committee members to plan and coordinate various aspects of the event. Contributed to creating a conducive and engaging environment for conference attendees. Assisted logistical arrangements for the conference."
+        name="Nov 2023"
+        title="Organizing Committee"
+        subTitle="International Conference on Digital Transformation"
+      /><br>
+    </div>
+
+    <div id="moot-court" class="mb-6">
+      <SectionTitle title="IBA-ICC Moot Court Competition" />
+
+      <RowEntry
+        description="Collaborated with a team to organize and execute a successful moot court competition. Coordinated schedules, managed logistics, and facilitated communication with participants and judges. Exhibited dedication and commitment to the success of the competition."
+        name="March 2024"
+        title="National Rounds"
+        subTitle="IBA-ICC Moot Court Competition"
+      /><br>
+    </div>
+
+    <div id="extra-curricular-experience" class="mb-6">
+      <SectionTitle title="Extra-Curricular Experience" />
+
+      <RowEntry
+        description="Played an integral role in the organization and successful completion of the walk on National Girl Child Day. Cooperated with my fellow interns to organize programs on cyber education for students in government schools. Participated in a fundraiser for educational funding for children recently rescued from Child Labour."
+        name="Dec 2023 - Jan 2024"
+        title="Volunteer"
+        subTitle="Child Rights And You (CRY)"
+      /><br>
+    </div>
+
+    <div id="social" class="justify-center flex flex-row mb-2">
+      <div class="mr-4">
+        <SocialIcon icon="fa-brands:linkedin" label="linkedin" url="https://www.linkedin.com/in/shaivi-kaushal" />
+      </div>
+    </div>
+
+    <script is:inline>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+
+      window.onload = function () {
+        const element = document.getElementById("dark-mode-toggle");
+
+        if (element) {
+          element.addEventListener("click", () => {
+            document.documentElement.classList.toggle("dark");
+
+            localStorage.theme = document.documentElement.classList.contains(
+              "dark"
+            )
+              ? "dark"
+              : "light";
+          });
+        }
+      };
+    </script>
+  </body>
+</html>
